@@ -17,4 +17,7 @@
 
 body {
 	margin: 0;
+	background-color: var(--bs-dark);
+	color: var(--white);
+	height: 100vh;
 }
