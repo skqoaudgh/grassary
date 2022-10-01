@@ -1,9 +1,11 @@
 import express from 'express';
 
-const PORT = 3000;
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
-app.listen(PORT, () => {
-	console.log(`nodejs listening ${PORT} port`);
+app.listen(process.env.PORT, () => {
+	console.log(`nodejs listening ${process.env.PORT} port`);
 });
