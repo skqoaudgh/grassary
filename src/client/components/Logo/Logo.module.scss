@@ -1,0 +1,24 @@
+.Logo {
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+
+	& > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+
+	&--sm {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	&--md {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	&--lg {
+		width: 3rem;
+		height: 3rem;
+	}
+}
