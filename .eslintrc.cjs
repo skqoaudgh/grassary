@@ -24,6 +24,7 @@ module.exports = {
 				unnamedComponents: 'arrow-function',
 			},
 		],
+		'react/jsx-props-no-spreading': 0,
 	},
 	settings: {
 		'import/resolver': {

@@ -21,3 +21,7 @@ body {
 	color: var(--white);
 	height: 100vh;
 }
+
+textarea {
+	resize: none;
+}
