@@ -1,6 +1,6 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import './App.css';
+import AuthContext, { AuthContextProvider } from '@/contexts/AuthContext';
 
 import Home from '@/containers/Home';
 import Header from '@/containers/Header';
@@ -8,12 +8,17 @@ import Body from '@/containers/Body';
 
 import OAUTH from '@/constants/oauth';
 
+import './App.css';
+
 const App = () => (
 	<GoogleOAuthProvider clientId={OAUTH.CLIENT_ID}>
 		<div className="App">
-			<Home />
-			<Header />
-			<Body />
+			<AuthContextProvider>
+				<Header />
+				<AuthContext.Consumer>
+					{({ id }) => (id ? <Body /> : <Home />)}
+				</AuthContext.Consumer>
+			</AuthContextProvider>
 		</div>
 	</GoogleOAuthProvider>
 );
