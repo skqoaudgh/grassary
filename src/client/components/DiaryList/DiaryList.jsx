@@ -18,7 +18,7 @@ const DiaryList = ({ list }) => (
 			<DiaryItem
 				key={item.id}
 				name={item.name}
-				avatarSrc={item.avatarSrc}
+				picture={item.picture}
 				date={new Intl.DateTimeFormat('en-US', options).format(item.date)}
 				content={item.content}
 			/>

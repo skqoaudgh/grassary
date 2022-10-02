@@ -1,10 +1,15 @@
+import { useContext } from 'react';
 import Avatar from 'react-avatar';
 import { Input, Button } from 'reactstrap';
+
+import AuthContext from '@/contexts/AuthContext';
 
 import ChevronRightIcon from '@/assets/chevron-right.svg';
 import styles from './TextInput.module.scss';
 
 const TextInput = (props) => {
+	const { name, picture } = useContext(AuthContext);
+
 	const onInput = (e) => {
 		e.target.style.height = '2rem';
 		e.target.style.height = `${e.target.scrollHeight}px`;
@@ -14,7 +19,8 @@ const TextInput = (props) => {
 		<div className={styles.TextInput}>
 			<Avatar
 				className={styles.TextInput__avatar}
-				name="Mac"
+				name={name}
+				src={picture}
 				size="56"
 				textSizeRatio={2}
 				color="#343a40"

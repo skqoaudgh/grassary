@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
