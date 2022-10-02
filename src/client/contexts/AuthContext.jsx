@@ -11,15 +11,12 @@ const AuthContextProviderWrapper = ({ children }) => {
 	const [name, setName] = useState('');
 	const [picture, setPicture] = useState('');
 
-	const setUserInfo = useCallback(
-		({ newId, newEmail, newName, newPicture }) => {
-			setId(newId);
-			setEmail(newEmail);
-			setName(newName);
-			setPicture(newPicture);
-		},
-		[],
-	);
+	const setUserInfo = useCallback((userInfo) => {
+		setId(userInfo.id);
+		setEmail(userInfo.email);
+		setName(userInfo.name);
+		setPicture(userInfo.picture);
+	}, []);
 
 	const contextValue = useMemo(
 		() => ({ id, email, name, picture, setUserInfo }),

@@ -16,7 +16,9 @@ const App = () => (
 			<AuthContextProvider>
 				<Header />
 				<AuthContext.Consumer>
-					{({ id }) => (id ? <Body /> : <Home />)}
+					{({ id, setUserInfo }) =>
+						id ? <Body /> : <Home setUserInfo={setUserInfo} />
+					}
 				</AuthContext.Consumer>
 			</AuthContextProvider>
 		</div>

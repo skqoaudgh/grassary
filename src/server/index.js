@@ -27,24 +27,25 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.post('/login', async (req, res, next) => {
+app.post('/login', async (req, res) => {
 	const { idToken } = req.body; // jwt token
-	let userInfo = null;
+	let userInfoFromToken = null;
 	try {
-		userInfo = await validateGoogleIdToken(idToken);
+		userInfoFromToken = await validateGoogleIdToken(idToken);
 	} catch {
-		userInfo = null;
+		userInfoFromToken = null;
 	}
 
-	if (userInfo) {
-		const isExist = await modUser.isExist(userInfo.id);
-		if (isExist) {
-			// 로그인 처리
-		} else {
-			// 생성 후 로그인 처리
-			await modUser.create(userInfo);
+	if (userInfoFromToken) {
+		const isExist = await modUser.isExist(userInfoFromToken.id);
+		if (!isExist) {
+			await modUser.create(userInfoFromToken);
 		}
+
+		const userInfo = await modUser.findById(userInfoFromToken.id);
+
+		res.json(userInfo);
 	} else {
-		// 인증 실패
+		res.json(false);
 	}
 });

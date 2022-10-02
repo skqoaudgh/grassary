@@ -10,7 +10,7 @@ const DiaryItem = ({ name, avatarSrc, date, content }) => (
 			name={name}
 			src={avatarSrc}
 			size="56"
-			textSizeRatio="2"
+			textSizeRatio={2}
 			color="#343a40"
 			round
 		/>

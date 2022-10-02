@@ -16,13 +16,12 @@ const TextInput = (props) => {
 				className={styles.TextInput__avatar}
 				name="Mac"
 				size="56"
-				textSizeRatio="2"
+				textSizeRatio={2}
 				color="#343a40"
 				round
 			/>
 			<Input
 				type="textarea"
-				n
 				className={styles.TextInput__input}
 				onInput={onInput}
 				{...props}

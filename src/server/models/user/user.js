@@ -9,7 +9,7 @@ const create = async ({ id, email, name, picture, date }) => {
 };
 
 const findById = async (id) => {
-	const ret = await db.findOne({ id }).select({ id: 1 });
+	const ret = await db.findOne({ id });
 
 	return ret;
 };
