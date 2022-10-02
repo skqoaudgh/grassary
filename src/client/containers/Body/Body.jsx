@@ -1,6 +1,6 @@
+import Grass from '@/containers/Grass';
 import DiaryList from '@/containers/DiaryList';
 import TextInput from '@/containers/TextInput';
-import Grass from '@/components/Grass';
 
 import styles from './Body.module.scss';
 

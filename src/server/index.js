@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import modUser from './models/user/user.js';
 import modDiary from './models/diary/diary.js';
 
+import serDiary from './services/diary.js';
+
 import { validateGoogleIdToken } from './utils/validate.js';
 
 dotenv.config();
@@ -52,11 +54,11 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/diarys', async (req, res) => {
-	const { user_id: userId } = req.query;
+	const { user_id: userId, select } = req.query;
 
 	let result = [];
-	if (userId) {
-		result = await modDiary.findById(userId);
+	if (userId && select === 'date') {
+		result = await serDiary.getGrassByUserId(userId);
 	} else {
 		result = await modDiary.findAll();
 	}

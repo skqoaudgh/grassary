@@ -69,8 +69,15 @@ const findAll = async () => {
 	return ret;
 };
 
+const findDateByUserId = async (userId) => {
+	const ret = await db.find({ userId }).select({ date: 1 });
+
+	return ret;
+};
+
 export default {
 	create,
 	findByUserId,
 	findAll,
+	findDateByUserId,
 };
