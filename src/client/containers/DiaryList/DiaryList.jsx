@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 import DiaryListComponent from '@/components/DiaryList';
+import Spinner from '@/components/Spinner';
 
 const fetchDiarys = () =>
 	axios.get('https://grassary-server.run.goorm.io/diarys');
@@ -11,7 +12,7 @@ const DiaryList = () => {
 	const { data: list = [] } = data || {};
 
 	if (isLoading) {
-		return <div>Loading...</div>;
+		return <Spinner />;
 	}
 
 	if (isError) {
