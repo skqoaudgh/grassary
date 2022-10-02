@@ -16,13 +16,13 @@
 	margin-top: 10%;
 }
 
-svg {
+.Spinner > svg {
 	width: 50%;
 	max-width: 5rem;
 	animation: rotate 3.6s linear infinite;
 }
 
-circle {
+.Spinner > svg > circle {
 	fill: none;
 	stroke: var(--bs-purple);
 	stroke-width: 8px;

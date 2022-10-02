@@ -1,9 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 import styles from './Spinner.module.scss';
 
-const Spinner = (props) => {
+const Spinner = () => {
 	return (
 		<div className={styles.Spiner_container}>
 			<div className={styles.Spinner}>
@@ -14,7 +11,5 @@ const Spinner = (props) => {
 		</div>
 	);
 };
-
-Spinner.propTypes = {};
 
 export default Spinner;
