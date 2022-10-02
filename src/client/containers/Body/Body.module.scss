@@ -1,4 +1,8 @@
 .Body {
 	max-width: 100rem;
 	padding: 1.5rem 0;
+
+	&__content {
+		padding: 1rem 0;
+	}
 }

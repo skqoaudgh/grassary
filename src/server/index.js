@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import modUser from './models/user/user.js';
+import modDiary from './models/diary/diary.js';
 
 import { validateGoogleIdToken } from './utils/validate.js';
 
@@ -48,4 +49,28 @@ app.post('/login', async (req, res) => {
 	} else {
 		res.json(false);
 	}
+});
+
+app.get('/diarys', async (req, res) => {
+	const { user_id: userId } = req.query;
+
+	let result = [];
+	if (userId) {
+		result = await modDiary.findById(userId);
+	} else {
+		result = await modDiary.findAll();
+	}
+
+	res.json(result);
+});
+
+app.post('/diarys', async (req, res) => {
+	const { userId, content } = req.body;
+
+	const createdDiaryInfo = await modDiary.create({
+		userId,
+		content: content.trim(),
+	});
+
+	res.json(createdDiaryInfo);
 });

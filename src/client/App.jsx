@@ -1,4 +1,5 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import AuthContext, { AuthContextProvider } from '@/contexts/AuthContext';
 
@@ -10,6 +11,8 @@ import OAUTH from '@/constants/oauth';
 
 import './App.css';
 
+const queryClient = new QueryClient();
+
 const App = () => (
 	<GoogleOAuthProvider clientId={OAUTH.CLIENT_ID}>
 		<div className="App">
@@ -17,7 +20,13 @@ const App = () => (
 				<Header />
 				<AuthContext.Consumer>
 					{({ id, setUserInfo }) =>
-						id ? <Body /> : <Home setUserInfo={setUserInfo} />
+						id ? (
+							<QueryClientProvider client={queryClient}>
+								<Body />
+							</QueryClientProvider>
+						) : (
+							<Home setUserInfo={setUserInfo} />
+						)
 					}
 				</AuthContext.Consumer>
 			</AuthContextProvider>

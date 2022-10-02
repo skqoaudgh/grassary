@@ -19,7 +19,9 @@ const DiaryList = ({ list }) => (
 				key={item.id}
 				name={item.name}
 				picture={item.picture}
-				date={new Intl.DateTimeFormat('en-US', options).format(item.date)}
+				date={new Intl.DateTimeFormat('en-US', options).format(
+					new Date(item.date),
+				)}
 				content={item.content}
 			/>
 		))}

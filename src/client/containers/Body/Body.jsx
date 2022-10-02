@@ -1,5 +1,6 @@
-import TextInput from '@/components/TextInput';
-import DiaryList from '@/components/DiaryList';
+import DiaryList from '@/containers/DiaryList';
+import TextInput from '@/containers/TextInput';
+
 import styles from './Body.module.scss';
 
 const Body = () => {
@@ -10,7 +11,9 @@ const Body = () => {
 	return (
 		<section className={styles.Body}>
 			<TextInput bsSize="md" />
-			<DiaryList list={list} />
+			<div className={styles.Body__content}>
+				<DiaryList list={list} />
+			</div>
 		</section>
 	);
 };
