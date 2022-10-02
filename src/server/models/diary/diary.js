@@ -7,13 +7,64 @@ const create = async ({ userId, content }) => {
 };
 
 const findByUserId = async (userId) => {
-	const ret = await db.find({ userId });
+	const ret = await db.aggregate([
+		{
+			$match: { userId },
+		},
+		{
+			$lookup: {
+				from: 'users',
+				localField: 'id',
+				foreignField: 'userId',
+				as: 'users',
+			},
+		},
+		{
+			$unwind: '$users',
+		},
+		{
+			$project: {
+				_id: 0,
+				id: '$_id',
+				content: 1,
+				date: 1,
+				userId: '$users.id',
+				email: '$users.email',
+				name: '$users.name',
+				picture: '$users.picture',
+			},
+		},
+	]);
 
 	return ret;
 };
 
 const findAll = async () => {
-	const ret = await db.find({});
+	const ret = await db.aggregate([
+		{
+			$lookup: {
+				from: 'users',
+				localField: 'id',
+				foreignField: 'userId',
+				as: 'users',
+			},
+		},
+		{
+			$unwind: '$users',
+		},
+		{
+			$project: {
+				_id: 0,
+				id: '$_id',
+				content: 1,
+				date: 1,
+				userId: '$users.id',
+				email: '$users.email',
+				name: '$users.name',
+				picture: '$users.picture',
+			},
+		},
+	]);
 
 	return ret;
 };

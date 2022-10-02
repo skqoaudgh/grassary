@@ -20,6 +20,7 @@
 	&__avatar {
 		display: flex;
 		align-self: flex-start;
+		flex-shrink: 0;
 	}
 
 	&__date {
