@@ -64,6 +64,11 @@ const findAll = async () => {
 				picture: '$users.picture',
 			},
 		},
+		{
+			$sort: {
+				date: -1,
+			},
+		},
 	]);
 
 	return ret;
