@@ -44,8 +44,8 @@ const findAll = async () => {
 		{
 			$lookup: {
 				from: 'users',
-				localField: 'id',
-				foreignField: 'userId',
+				localField: 'userId',
+				foreignField: 'id',
 				as: 'users',
 			},
 		},
